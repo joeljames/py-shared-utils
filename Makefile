@@ -29,11 +29,11 @@ open_docs:
 
 .PHONY: publish_test
 publish_test:
-	@python setup.py sdist upload -r pypitest
+	@python setup.py sdist upload -r pypipersonaltest
 
 .PHONY: publish
 publish:
-	@python setup.py sdist upload -r pypi
+	@python setup.py sdist upload -r pypipersonal
 
 .PHONY: clean
 clean:
