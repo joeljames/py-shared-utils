@@ -1,7 +1,7 @@
 pysharedutils
 =============
 
-`pysharedutils` is a convenient utility module which are not included in standard Python install. Click [here](http://pysharedutils.readthedocs.org/en/latest/) for documentation.
+`pysharedutils` is a convenient utility module which are not included in standard Python install. Click [here](http://py-shared-utils.readthedocs.io/en/latest/) for documentation.
 
 Installation
 ------------
@@ -17,7 +17,7 @@ $ pip install git+git://github.com/joeljames/py-shared-utils.git
 
 Documentation
 -------------
-For full documentation and examples see (http://pysharedutils.readthedocs.org/en/latest/).
+For full documentation and examples see (http://py-shared-utils.readthedocs.io/en/latest/).
 
 
 Feature Requests and Bug Reports
