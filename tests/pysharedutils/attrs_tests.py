@@ -4,7 +4,7 @@ from mock import *  # flake8: noqa
 import pysharedutils
 
 
-class TestAttrs:
+class TestGetObjectBySource:
 
     def test_get_object_by_source_with_obj(self):
         user = Mock(name='user', username='foo.bar.com')

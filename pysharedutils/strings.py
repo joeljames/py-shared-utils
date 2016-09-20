@@ -1,15 +1,34 @@
-import six
+import re
 
 __all__ = [
-    'force_str',
+    'camel_to_snake_case',
+    'snake_to_camel_case',
 ]
 
 
-def force_str(value, encoding='utf-8'):
+def camel_to_snake_case(word):
     """
-    Forces the value to a str instance, decoding if necessary.
+    :param word: A string that needs to be converted to snake case.
+
+    Converts a camelcase word to snake case.
+    Example:
+        >>> camel_to_snake_case('camelCase')
+        'camel_case'
     """
-    if six.PY3:
-        if isinstance(value, bytes):
-            return str(value, encoding)
-    return value
+    word = re.sub(r'([A-Z]+)([A-Z][a-z])', r'\1_\2', word)
+    word = re.sub(r'([a-z\d])([A-Z])', r'\1_\2', word)
+    word = word.replace('-', '_')
+    return word.lower()
+
+
+def snake_to_camel_case(word):
+    """
+    :param word: A string that needs to be converted to camel case.
+
+    Convert words to CamelCase.
+    Example:
+        >>> snake_to_camel_case('snake_case')
+        'snakeCase'
+    """
+    word = re.sub(r"(?:^|_)(.)", lambda m: m.group(1).upper(), word)
+    return word[0].lower() + word[1:]

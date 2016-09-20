@@ -26,6 +26,8 @@ Also, you can get the source from `GitHub <https://github.com/joeljames/py-share
     $ cd pysharedutils
     $ python setup.py install
 
+:doc:`examples`
+  Some quick usage examples.
 
 Contribute
 ----------
@@ -68,3 +70,18 @@ Push up your changes::
     $ git push origin name-of-feature
 
 Submit a pull request. Before submitting a pull request, make sure pull request add the functionality, it is tested and docs are updated.
+
+
+.. toctree::
+    :maxdepth: 1
+    :numbered:
+    :hidden:
+
+    examples
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

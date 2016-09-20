@@ -4,7 +4,7 @@ from mock import *  # flake8: noqa
 import pysharedutils
 
 
-class TestIttrs:
+class TestIsIterable:
 
     def test_is_iterable_true(self):
         output = pysharedutils.is_iterable([])
