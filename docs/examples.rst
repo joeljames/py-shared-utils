@@ -48,6 +48,46 @@ Example with python dict::
     # 'foobar'
 
 
+Dicts
+=====
+MultiDict:
+----------
+Extends a python dict type by adding ``getlist`` method. Signature: ``MultiDict(dict)``
+
+Example::
+
+    import pysharedutils
+    output = pysharedutils.MultiDict({'username': 'foobar'})
+    output.getlist('username')
+    # ['foobar']
+
+compact_dict:
+-------------
+Creates a dict with all falsey values removed. Signature: ``compact_dict(obj)``
+
+:attr:`obj`
+    A dict who's falsey values has to be removed.
+
+Example::
+
+    import pysharedutils
+    pysharedutils.compact_dict({'username': 'foobar', 'name': ''})
+    # {'username': 'foobar'}
+
+
+merge_dicts:
+------------
+Merges all of the given dicts together. Signature: ``compact_dict(*dicts)``
+
+Example::
+
+    import pysharedutils
+    d1 = {'a': 'apple'}
+    d2 = {'b': 'ball'}
+    pysharedutils.merge_dicts(d1, d2)
+    # {'a': 'apple', 'b': 'ball'}
+
+
 Encodings
 =========
 force_bytes:
@@ -104,6 +144,19 @@ Example::
     pysharedutils.compact_list([False, 1, '', {}])
     # [1]
 
+force_list:
+-----------
+Force the given object to be a list, wrapping single objects. Signature: ``force_list(obj)``
+
+:attr:`obj`
+    A obj which has to be converted to list.
+
+Example::
+
+    import pysharedutils
+    pysharedutils.force_list('name')
+    # ['name']
+
 
 Strings
 =======
@@ -135,3 +188,19 @@ Example::
     import pysharedutils
     pysharedutils.snake_to_camel_case('snake_case')
     # 'snakeCase'
+
+equals:
+-------
+Returns True if the two strings are equal, False otherwise. The time taken is independent of the number of characters that match. For the sake of simplicity, this function executes in constant time only when the two strings have the same length. It short-circuits when they have different lengths. Signature: ``equals(val1, val2)``
+
+:attr:`val1`
+    A string that has to be compared.
+
+:attr:`val2`
+    A string that has to be compared.
+
+Example::
+
+    import pysharedutils
+    pysharedutils.equals('some_value', 'some_value')
+    # True

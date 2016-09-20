@@ -1,4 +1,5 @@
 from pysharedutils.attrs import *  # NOQA
+from pysharedutils.dicts import *  # NOQA
 from pysharedutils.encodings import *  # NOQA
 from pysharedutils.ittrs import *  # NOQA
 from pysharedutils.lists import *  # NOQA
@@ -13,6 +14,10 @@ __short_version__ = __version__
 __all__ = [
     # Atrrs
     'get_object_by_source',
+    # Dicts
+    'MultiDict',
+    'compact_dict',
+    'merge_dicts',
     # Encodings
     'force_bytes',
     'force_str',
@@ -20,7 +25,9 @@ __all__ = [
     'is_iterable',
     # Lists
     'compact_list',
+    'force_list',
     # Strings
     'camel_to_snake_case',
     'snake_to_camel_case',
+    'equals',
 ]
