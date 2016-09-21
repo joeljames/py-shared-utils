@@ -88,7 +88,6 @@ Example::
     pysharedutils.compact_dict({'username': 'foobar', 'name': ''})
     # {'username': 'foobar'}
 
-
 merge_dicts:
 ------------
 Merges all of the given dicts together. Signature: ``compact_dict(*dicts)``
@@ -100,6 +99,16 @@ Example::
     d2 = {'b': 'ball'}
     pysharedutils.merge_dicts(d1, d2)
     # {'a': 'apple', 'b': 'ball'}
+
+snake_case_dict:
+----------------
+Maps the keys of the dict from camelCase to snake_case.. Signature: ``snake_case_dict(obj)``
+
+Example::
+
+    import pysharedutils
+    pysharedutils.snake_case_dict({'camelCase': 'camel_case'})
+    # {'camel_case': 'camel_case'}
 
 
 Encodings

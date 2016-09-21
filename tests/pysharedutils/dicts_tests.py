@@ -29,3 +29,52 @@ class TestMergeDicts:
             output,
             {'a': 'apple', 'b': 'ball', 'c': 'cat'}
         )
+
+
+class TestSnakeCaseDict:
+
+    def test_simple_snake_case_dict(self):
+        output = pysharedutils.snake_case_dict(
+            {'camelCase': 'some value'}
+        )
+        assert_equal(
+            output,
+            {'camel_case': 'some value'}
+        )
+
+    def test_nested_snake_case_dict(self):
+        obj = {
+            1: 'int key',
+            (1, 2): 'tuple key',
+            'user': {
+                'userName': 'foo',
+                'comments': [
+                    {
+                        'someComent': 'abc',
+                        'someNestedDict': {
+                            'camelCase': 'a'
+                        }
+                    }
+                ]
+            }
+        }
+        expected_output = {
+            1: 'int key',
+            (1, 2): 'tuple key',
+            'user': {
+                'user_name': 'foo',
+                'comments': [
+                    {
+                        'some_coment': 'abc',
+                        'some_nested_dict': {
+                            'camel_case': 'a'
+                        }
+                    }
+                ]
+            }
+        }
+        output = pysharedutils.snake_case_dict(obj)
+        assert_equal(
+            output,
+            expected_output
+        )
