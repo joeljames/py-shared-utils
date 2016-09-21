@@ -158,6 +158,20 @@ Example::
     # ['name']
 
 
+flatten_list:
+-------------
+Creates an a flattened list.. Signature: ``flatten_list(arr)``
+
+:attr:`arr`
+    A list which has to be flattened.
+
+Example::
+
+    import pysharedutils
+    pysharedutils.flatten_list([1, [2, [3, [4]], 5]])
+    # [1, 2, 3, 4, 5]
+
+
 Strings
 =======
 camel_to_snake_case:

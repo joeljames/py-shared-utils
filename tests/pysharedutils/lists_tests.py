@@ -25,3 +25,11 @@ class TestForceList:
         obj = Mock(name='obj')
         output = pysharedutils.force_list(obj)
         assert_equal(output, [obj])
+
+
+class TestFlattenList:
+
+    def test_flatten_list(self):
+        arr = [1, [2, [3, [4]], 5]]
+        output = pysharedutils.flatten_list(arr)
+        assert_equal(output, [1, 2, 3, 4, 5])

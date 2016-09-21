@@ -1,6 +1,7 @@
 __all__ = [
     'compact_list',
     'force_list',
+    'flatten_list',
 ]
 
 
@@ -25,3 +26,19 @@ def force_list(obj):
         return [obj]
     else:
         return list(obj)
+
+
+def flatten_list(arr):
+    """
+    :param arr: A list which has to be flattened.
+
+    Creates an a flattened list.
+    """
+    result = []
+    for item in arr:
+        if isinstance(item, list):
+            result.append(flatten_list(item))
+        else:
+            result.append([item])
+
+    return sum(result, [])

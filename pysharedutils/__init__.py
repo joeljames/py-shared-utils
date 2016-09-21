@@ -26,6 +26,7 @@ __all__ = [
     # Lists
     'compact_list',
     'force_list',
+    'flatten_list',
     # Strings
     'camel_to_snake_case',
     'snake_to_camel_case',
