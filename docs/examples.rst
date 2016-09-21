@@ -220,6 +220,28 @@ Example::
     pysharedutils.list_intersection([1, 2], [1])
     # [1]
 
+list_find:
+-----------
+Iterates over elements of collection, returning the first element predicate returns truthy for. Signature: ``list_find(coll, predicate, from_index=0)``
+
+:attr:`coll`
+    The collection to inspect.
+
+:attr:`predicate`
+    The function invoked per iteration.
+
+:attr:`from_index` Default(0)
+    The index to search from.
+
+Example::
+
+    import pysharedutils
+    def predicate(value):
+        if value > 40:
+            return True
+    pysharedutils.list_find([1, 2, 41, 80], predicate)
+    # 41
+
 
 Strings
 =======

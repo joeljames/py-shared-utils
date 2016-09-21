@@ -1,8 +1,11 @@
+import itertools
+
 __all__ = [
     'compact_list',
     'force_list',
     'flatten_list',
     'list_intersection',
+    'list_find',
 ]
 
 
@@ -53,3 +56,18 @@ def list_intersection(arr1, arr2):
     Return the intersection of the two lists.
     """
     return list(set(arr1) & set(arr2))
+
+
+def list_find(coll, predicate, from_index=0):
+    """
+    :param coll: The collection to inspect.
+    :param predicate: The function invoked per iteration.
+    :param from_index: The index to search from.
+
+    Iterates over elements of collection, returning the first element
+    predicate returns truthy for.
+    """
+    for item in itertools.islice(coll, from_index, None, None):
+        if predicate(item):
+            return item
+    return None

@@ -48,3 +48,20 @@ class TestListIntersection:
     def test_list_intersection_with_no_intersection(self):
         output = pysharedutils.list_intersection([], [2, 1])
         assert_equal(output, [])
+
+
+class TestListFind:
+
+    def test_list_find(self):
+        def predicate(value):
+            if value > 40:
+                return True
+        output = pysharedutils.list_find([1, 2, 41, 80], predicate)
+        assert_equal(output, 41)
+
+    def test_list_find_with_from_index(self):
+        def predicate(value):
+            if value > 40:
+                return True
+        output = pysharedutils.list_find([1, 2, 41, 80], predicate, 3)
+        assert_equal(output, 80)

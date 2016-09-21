@@ -33,6 +33,7 @@ __all__ = [
     'force_list',
     'flatten_list',
     'list_intersection',
+    'list_find',
     # Strings
     'camel_to_snake_case',
     'snake_to_camel_case',
