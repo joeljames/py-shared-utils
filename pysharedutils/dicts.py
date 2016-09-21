@@ -10,8 +10,8 @@ __all__ = [
     'MultiDict',
     'compact_dict',
     'merge_dicts',
-    'snake_case_dict',
-    'camel_case_dict',
+    'snake_case_dict_keys',
+    'camel_case_dict_keys',
 ]
 
 
@@ -44,14 +44,14 @@ def merge_dicts(*dicts):
     return result
 
 
-def snake_case_dict(obj):
+def snake_case_dict_keys(obj):
     """
     :param obj: A dict who's keys has to
         be converted from camel case to snake case.
 
     Maps the keys of the dict from camelCase to snake_case.
     Example:
-        >>> snake_case_dict({'camelCase': 'camel_case'})
+        >>> snake_case_dict_keys({'camelCase': 'camel_case'})
         {'camel_case': 'camel_case'}
     """
     output = {}
@@ -61,11 +61,11 @@ def snake_case_dict(obj):
             arr = []
             for value in value_list:
                 if isinstance(value, dict):
-                    value = snake_case_dict(value)
+                    value = snake_case_dict_keys(value)
                 arr.append(value)
             element = arr
         elif isinstance(v, dict):
-            element = snake_case_dict(v)
+            element = snake_case_dict_keys(v)
         else:
             element = v
 
@@ -78,14 +78,14 @@ def snake_case_dict(obj):
     return output
 
 
-def camel_case_dict(obj):
+def camel_case_dict_keys(obj):
     """
     :param obj: A dict who's keys has to
         be converted from snake case to camel case.
 
     Maps the keys of the dict from snake case to camel case.
     Example:
-        >>> camel_case_dict({'snake_case': 'snake_case'})
+        >>> camel_case_dict_keys({'snake_case': 'snake_case'})
         {'snakeCase': 'snake_case'}
     """
     output = {}
@@ -95,11 +95,11 @@ def camel_case_dict(obj):
             arr = []
             for value in value_list:
                 if isinstance(value, dict):
-                    value = camel_case_dict(value)
+                    value = camel_case_dict_keys(value)
                 arr.append(value)
             element = arr
         elif isinstance(v, dict):
-            element = camel_case_dict(v)
+            element = camel_case_dict_keys(v)
         else:
             element = v
 

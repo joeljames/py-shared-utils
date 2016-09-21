@@ -58,10 +58,10 @@ def list_intersection(arr1, arr2):
     return list(set(arr1) & set(arr2))
 
 
-def list_find(coll, predicate, from_index=0):
+def list_find(predicate, coll, from_index=0):
     """
-    :param coll: The collection to inspect.
     :param predicate: The function invoked per iteration.
+    :param coll: The collection to inspect.
     :param from_index: The index to search from.
 
     Iterates over elements of collection, returning the first element

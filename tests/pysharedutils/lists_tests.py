@@ -56,12 +56,12 @@ class TestListFind:
         def predicate(value):
             if value > 40:
                 return True
-        output = pysharedutils.list_find([1, 2, 41, 80], predicate)
+        output = pysharedutils.list_find(predicate, [1, 2, 41, 80])
         assert_equal(output, 41)
 
     def test_list_find_with_from_index(self):
         def predicate(value):
             if value > 40:
                 return True
-        output = pysharedutils.list_find([1, 2, 41, 80], predicate, 3)
+        output = pysharedutils.list_find(predicate, [1, 2, 41, 80], 3)
         assert_equal(output, 80)

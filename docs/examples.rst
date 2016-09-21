@@ -100,24 +100,24 @@ Example::
     pysharedutils.merge_dicts(d1, d2)
     # {'a': 'apple', 'b': 'ball'}
 
-snake_case_dict:
-----------------
-Maps the keys of the dict from camel case to snake case. Signature: ``snake_case_dict(obj)``
+snake_case_dict_keys:
+---------------------
+Maps the keys of the dict from camel case to snake case. Signature: ``snake_case_dict_keys(obj)``
 
 Example::
 
     import pysharedutils
-    pysharedutils.snake_case_dict({'camelCase': 'camel_case'})
+    pysharedutils.snake_case_dict_keys({'camelCase': 'camel_case'})
     # {'camel_case': 'camel_case'}
 
-camel_case_dict:
-----------------
-Maps the keys of the dict from snake case to camel case. Signature: ``camel_case_dict(obj)``
+camel_case_dict_keys:
+---------------------
+Maps the keys of the dict from snake case to camel case. Signature: ``camel_case_dict_keys(obj)``
 
 Example::
 
     import pysharedutils
-    pysharedutils.camel_case_dict({'snake_case': 'snake_case'})
+    pysharedutils.camel_case_dict_keys({'snake_case': 'snake_case'})
     # {'snakeCase': 'snake_case'}
 
 
@@ -222,13 +222,13 @@ Example::
 
 list_find:
 -----------
-Iterates over elements of collection, returning the first element predicate returns truthy for. Signature: ``list_find(coll, predicate, from_index=0)``
-
-:attr:`coll`
-    The collection to inspect.
+Iterates over elements of collection, returning the first element predicate returns truthy for. Signature: ``list_find(predicate, coll, from_index=0)``
 
 :attr:`predicate`
     The function invoked per iteration.
+
+:attr:`coll`
+    The collection to inspect.
 
 :attr:`from_index` Default(0)
     The index to search from.
@@ -239,7 +239,7 @@ Example::
     def predicate(value):
         if value > 40:
             return True
-    pysharedutils.list_find([1, 2, 41, 80], predicate)
+    pysharedutils.list_find(predicate, [1, 2, 41, 80])
     # 41
 
 

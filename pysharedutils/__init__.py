@@ -21,8 +21,8 @@ __all__ = [
     'MultiDict',
     'compact_dict',
     'merge_dicts',
-    'snake_case_dict',
-    'camel_case_dict',
+    'snake_case_dict_keys',
+    'camel_case_dict_keys',
     # Encodings
     'force_bytes',
     'force_str',

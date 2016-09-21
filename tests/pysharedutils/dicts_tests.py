@@ -31,10 +31,10 @@ class TestMergeDicts:
         )
 
 
-class TestSnakeCaseDict:
+class TestSnakeCaseDictKeys:
 
-    def test_simple_snake_case_dict(self):
-        output = pysharedutils.snake_case_dict(
+    def test_simple_snake_case_dict_keys(self):
+        output = pysharedutils.snake_case_dict_keys(
             {'camelCase': 'some value'}
         )
         assert_equal(
@@ -42,7 +42,7 @@ class TestSnakeCaseDict:
             {'camel_case': 'some value'}
         )
 
-    def test_nested_snake_case_dict(self):
+    def test_nested_snake_case_dict_keys(self):
         obj = {
             1: 'int key',
             (1, 2): 'tuple key',
@@ -75,17 +75,17 @@ class TestSnakeCaseDict:
                 ]
             }
         }
-        output = pysharedutils.snake_case_dict(obj)
+        output = pysharedutils.snake_case_dict_keys(obj)
         assert_equal(
             output,
             expected_output
         )
 
 
-class TestCamelCaseDict:
+class TestCamelCaseDictKeys:
 
-    def test_simple_camel_case_dict(self):
-        output = pysharedutils.camel_case_dict(
+    def test_simple_camel_case_dict_keys(self):
+        output = pysharedutils.camel_case_dict_keys(
             {'snake_case': 'some value'}
         )
         assert_equal(
@@ -93,7 +93,7 @@ class TestCamelCaseDict:
             {'snakeCase': 'some value'}
         )
 
-    def test_nested_camel_case_dict(self):
+    def test_nested_camel_case_dict_keys(self):
         obj = {
             1: 'int key',
             (1, 2): 'tuple key',
@@ -126,7 +126,7 @@ class TestCamelCaseDict:
                 ]
             }
         }
-        output = pysharedutils.camel_case_dict(obj)
+        output = pysharedutils.camel_case_dict_keys(obj)
         assert_equal(
             output,
             expected_output
