@@ -46,6 +46,7 @@ class TestSnakeCaseDict:
         obj = {
             1: 'int key',
             (1, 2): 'tuple key',
+            'snake_case': '',
             'user': {
                 'userName': 'foo',
                 'comments': [
@@ -61,6 +62,7 @@ class TestSnakeCaseDict:
         expected_output = {
             1: 'int key',
             (1, 2): 'tuple key',
+            'snake_case': '',
             'user': {
                 'user_name': 'foo',
                 'comments': [
@@ -74,6 +76,57 @@ class TestSnakeCaseDict:
             }
         }
         output = pysharedutils.snake_case_dict(obj)
+        assert_equal(
+            output,
+            expected_output
+        )
+
+
+class TestCamelCaseDict:
+
+    def test_simple_camel_case_dict(self):
+        output = pysharedutils.camel_case_dict(
+            {'snake_case': 'some value'}
+        )
+        assert_equal(
+            output,
+            {'snakeCase': 'some value'}
+        )
+
+    def test_nested_camel_case_dict(self):
+        obj = {
+            1: 'int key',
+            (1, 2): 'tuple key',
+            'camelCase': '',
+            'user': {
+                'user_name': 'foo',
+                'comments': [
+                    {
+                        'some_coment': 'abc',
+                        'some_nested_dict': {
+                            'camel_case': 'a'
+                        }
+                    }
+                ]
+            }
+        }
+        expected_output = {
+            1: 'int key',
+            (1, 2): 'tuple key',
+            'camelCase': '',
+            'user': {
+                'userName': 'foo',
+                'comments': [
+                    {
+                        'someComent': 'abc',
+                        'someNestedDict': {
+                            'camelCase': 'a'
+                        }
+                    }
+                ]
+            }
+        }
+        output = pysharedutils.camel_case_dict(obj)
         assert_equal(
             output,
             expected_output

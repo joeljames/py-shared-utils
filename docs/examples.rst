@@ -102,13 +102,23 @@ Example::
 
 snake_case_dict:
 ----------------
-Maps the keys of the dict from camelCase to snake_case.. Signature: ``snake_case_dict(obj)``
+Maps the keys of the dict from camel case to snake case. Signature: ``snake_case_dict(obj)``
 
 Example::
 
     import pysharedutils
     pysharedutils.snake_case_dict({'camelCase': 'camel_case'})
     # {'camel_case': 'camel_case'}
+
+camel_case_dict:
+----------------
+Maps the keys of the dict from snake case to camel case. Signature: ``camel_case_dict(obj)``
+
+Example::
+
+    import pysharedutils
+    pysharedutils.camel_case_dict({'snake_case': 'snake_case'})
+    # {'snakeCase': 'snake_case'}
 
 
 Encodings

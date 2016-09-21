@@ -1,13 +1,17 @@
 import six
 import collections
 
-from pysharedutils.strings import camel_to_snake_case
+from pysharedutils.strings import (
+    camel_to_snake_case,
+    snake_to_camel_case
+)
 
 __all__ = [
     'MultiDict',
     'compact_dict',
     'merge_dicts',
     'snake_case_dict',
+    'camel_case_dict',
 ]
 
 
@@ -67,6 +71,40 @@ def snake_case_dict(obj):
 
         if isinstance(k, six.string_types):
             key = camel_to_snake_case(k)
+        else:
+            key = k
+
+        output[key] = element
+    return output
+
+
+def camel_case_dict(obj):
+    """
+    :param obj: A dict who's keys has to
+        be converted from snake case to camel case.
+
+    Maps the keys of the dict from snake case to camel case.
+    Example:
+        >>> camel_case_dict({'snake_case': 'snake_case'})
+        {'snakeCase': 'snake_case'}
+    """
+    output = {}
+    for k, v in six.iteritems(obj):
+        if isinstance(v, list):
+            value_list = v
+            arr = []
+            for value in value_list:
+                if isinstance(value, dict):
+                    value = camel_case_dict(value)
+                arr.append(value)
+            element = arr
+        elif isinstance(v, dict):
+            element = camel_case_dict(v)
+        else:
+            element = v
+
+        if isinstance(k, six.string_types):
+            key = snake_to_camel_case(k)
         else:
             key = k
 

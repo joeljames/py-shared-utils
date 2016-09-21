@@ -22,6 +22,7 @@ __all__ = [
     'compact_dict',
     'merge_dicts',
     'snake_case_dict',
+    'camel_case_dict',
     # Encodings
     'force_bytes',
     'force_str',
