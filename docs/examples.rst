@@ -160,7 +160,7 @@ Example::
 
 flatten_list:
 -------------
-Creates an a flattened list.. Signature: ``flatten_list(arr)``
+Creates an a flattened list. Signature: ``flatten_list(arr)``
 
 :attr:`arr`
     A list which has to be flattened.
@@ -170,6 +170,22 @@ Example::
     import pysharedutils
     pysharedutils.flatten_list([1, [2, [3, [4]], 5]])
     # [1, 2, 3, 4, 5]
+
+list_intersection:
+------------------
+Return the intersection of the two lists. Signature: ``list_intersection(arr1, arr2)``
+
+:attr:`arr1`
+    A list that has to be intersected.
+
+:attr:`arr2`
+    A list that has to be intersected.
+
+Example::
+
+    import pysharedutils
+    pysharedutils.list_intersection([1, 2], [1])
+    # [1]
 
 
 Strings

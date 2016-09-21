@@ -2,6 +2,7 @@ __all__ = [
     'compact_list',
     'force_list',
     'flatten_list',
+    'list_intersection',
 ]
 
 
@@ -42,3 +43,13 @@ def flatten_list(arr):
             result.append([item])
 
     return sum(result, [])
+
+
+def list_intersection(arr1, arr2):
+    """
+    :param arr1: A list that has to be intersected.
+    :param arr2: A list that has to be intersected.
+
+    Return the intersection of the two lists.
+    """
+    return list(set(arr1) & set(arr2))

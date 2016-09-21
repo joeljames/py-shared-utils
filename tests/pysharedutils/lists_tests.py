@@ -33,3 +33,18 @@ class TestFlattenList:
         arr = [1, [2, [3, [4]], 5]]
         output = pysharedutils.flatten_list(arr)
         assert_equal(output, [1, 2, 3, 4, 5])
+
+
+class TestListIntersection:
+
+    def test_list_intersection(self):
+        output = pysharedutils.list_intersection([1, 2, 3], [1])
+        assert_equal(output, [1])
+
+    def test_list_intersection_with_arr2_gt_lenght(self):
+        output = pysharedutils.list_intersection([1], [9, 6, 1])
+        assert_equal(output, [1])
+
+    def test_list_intersection_with_no_intersection(self):
+        output = pysharedutils.list_intersection([], [2, 1])
+        assert_equal(output, [])
