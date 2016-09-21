@@ -48,6 +48,20 @@ Example with python dict::
     # 'foobar'
 
 
+Dates
+=====
+utc_now:
+--------
+Returns current UTC time and sets the time zone info to UTC. Signature: ``utc_now()``
+
+Example::
+
+    import pysharedutils
+    pysharedutils.utc_now()
+    output.utc_now()
+    # datetime.datetime(2016, 9, 21, 18, 56, 53, 863501, tzinfo=<UTC>)
+
+
 Dicts
 =====
 MultiDict:

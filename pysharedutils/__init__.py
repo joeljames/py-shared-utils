@@ -1,4 +1,5 @@
 from pysharedutils.attrs import *  # NOQA
+from pysharedutils.dates import *  # NOQA
 from pysharedutils.dicts import *  # NOQA
 from pysharedutils.encodings import *  # NOQA
 from pysharedutils.ittrs import *  # NOQA
@@ -14,6 +15,8 @@ __short_version__ = __version__
 __all__ = [
     # Atrrs
     'get_object_by_source',
+    # Dates
+    'utc_now',
     # Dicts
     'MultiDict',
     'compact_dict',
