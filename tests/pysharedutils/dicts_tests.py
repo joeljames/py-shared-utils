@@ -14,8 +14,48 @@ class TestMultiDict:
 class TestCompactDict:
 
     def test_compact_dict(self):
-        output = pysharedutils.compact_dict({'username': 'foobar', 'name': ''})
-        assert_equal(output, {'username': 'foobar'})
+        data = {
+            'username': 'foobar',
+            'name': '',
+            'comment': {
+                'line_1': 'abc',
+                'line_2': '',
+                'inner_nesting': {
+                    'key': 'value',
+                    'blank': None
+                }
+            },
+            'location': [
+                {
+                    'address_1': '',
+                    'city': 'Baton Rouge',
+                    'inner_nesting': {
+                        'key': 'value',
+                        'blank': None
+                    }
+                }
+            ]
+        }
+        expected_output = {
+            'username': 'foobar',
+            'comment': {
+                'line_1': 'abc',
+                'inner_nesting': {
+                    'key': 'value',
+                }
+            },
+            'location': [
+                {
+                    'city': 'Baton Rouge',
+                    'inner_nesting': {
+                        'key': 'value'
+                    }
+                }
+            ]
+        }
+        output = pysharedutils.compact_dict(data)
+        set_trace()
+        assert_equal(output, expected_output)
 
 
 class TestMergeDicts:

@@ -30,7 +30,22 @@ def compact_dict(obj):
 
     Creates an dict with all falsey values removed.
     """
-    return {key: value for key, value in six.iteritems(obj) if value}
+    output = {}
+    for key, value in six.iteritems(obj):
+        element = None
+        if isinstance(value, collections.Mapping):
+            element = compact_dict(value)
+        elif isinstance(value, list):
+            arr = []
+            for i in value:
+                element = compact_dict(i)
+                arr.append(element)
+            element = arr
+        elif value:
+            element = value
+        if element:
+            output[key] = element
+    return output
 
 
 def merge_dicts(*dicts):

@@ -85,8 +85,30 @@ Creates a dict with all falsey values removed. Signature: ``compact_dict(obj)``
 Example::
 
     import pysharedutils
-    pysharedutils.compact_dict({'username': 'foobar', 'name': ''})
-    # {'username': 'foobar'}
+    data = {
+        'username': 'foobar',
+        'name': '',
+        'comment': {
+            'line_1': 'abc',
+            'line_2': '',
+            'inner_nesting': {
+                'key': 'value',
+                'blank': None
+            }
+        },
+        'location': [
+            {
+                'address_1': '',
+                'city': 'Baton Rouge',
+                'inner_nesting': {
+                    'key': 'value',
+                    'blank': None
+                }
+            }
+        ]
+    }
+    pysharedutils.compact_dict(data)
+    # {'username': 'foobar', 'comment': {'line_1': 'abc', 'inner_nesting': {'key': 'value'}}, 'location': [{'city': 'Baton Rouge', 'inner_nesting': {'key': 'value'}}]}
 
 merge_dicts:
 ------------
