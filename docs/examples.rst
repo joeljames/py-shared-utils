@@ -62,6 +62,51 @@ Example::
     # datetime.datetime(2016, 9, 21, 18, 56, 53, 863501, tzinfo=<UTC>)
 
 
+Decorators
+==========
+singleton:
+----------
+Decorator that creates a singleton instance. If the method is called later a cached instance of the method is returned. Signature: ``@singleton``
+
+Example::
+
+    import pysharedutils
+
+    @pysharedutils.singleton
+    def some_method(self):
+        return 'Something'
+
+memoize:
+--------
+Decorator that Caches a function's return value each time it is called. If called later with the same arguments, the cached value is returned, and the method is not reevaluated. Signature: ``@memoize``
+
+Example::
+
+    import pysharedutils
+
+    @pysharedutils.memoize
+    def some_method(self, arg1, arg2):
+        # Perform some heavy computation
+        return 'Something'
+
+cached_property:
+----------------
+Decorator that caches the property on the instance. Computed only once per instance. Signature: ``@cached_property``
+
+Example::
+
+    import pysharedutils
+
+    class SlowClass:
+
+        @pysharedutils.cached_property
+        def very_slow(self):
+            time.sleep(1)
+            return "Slow class"
+
+    SlowClass().very_slow
+
+
 Dicts
 =====
 MultiDict:
@@ -186,23 +231,6 @@ Example::
 
 Functions
 =========
-cached_property:
-----------------
-Decorator that caches the property on the instance. Computed only once per instance. Signature: ``@cached_property``
-
-Example::
-
-    import pysharedutils
-
-    class SlowClass:
-
-        @pysharedutils.cached_property
-        def very_slow(self):
-            time.sleep(1)
-            return "Slow class"
-
-    SlowClass().very_slow
-
 import_by_path:
 ---------------
 Imports a class or module by path(dot syntax). Raise ImportError if the import failed. Signature: ``import_by_path(path)``

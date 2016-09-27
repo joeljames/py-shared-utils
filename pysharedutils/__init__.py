@@ -1,5 +1,6 @@
 from pysharedutils.attrs import *  # NOQA
 from pysharedutils.dates import *  # NOQA
+from pysharedutils.decorators import *  # NOQA
 from pysharedutils.dicts import *  # NOQA
 from pysharedutils.encodings import *  # NOQA
 from pysharedutils.functions import *  # NOQA
@@ -18,6 +19,10 @@ __all__ = [
     'get_object_by_source',
     # Dates
     'utc_now',
+    # Decorators
+    'singleton',
+    'memoize',
+    'cached_property',
     # Dicts
     'MultiDict',
     'compact_dict',
@@ -28,7 +33,6 @@ __all__ = [
     'force_bytes',
     'force_str',
     # Functions
-    'cached_property',
     'import_by_path',
     # Ittrs
     'is_iterable',
