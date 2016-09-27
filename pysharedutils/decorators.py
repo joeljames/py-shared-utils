@@ -24,7 +24,7 @@ def singleton(func):
 
 def memoize(func):
     """
-    Decorator that Caches a function's return value each time it is called.
+    Decorator that caches a function's return value each time it is called.
     If called later with the same arguments, the cached value is returned,
     and the method is not reevaluated..
     """
