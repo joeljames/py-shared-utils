@@ -203,6 +203,20 @@ Example::
 
     SlowClass().very_slow
 
+import_by_path:
+---------------
+Imports a class or module by path(dot syntax). Raise ImportError if the import failed. Signature: ``import_by_path(path)``
+
+:attr:`path`
+    The path to the class that has to be imported.
+
+Example::
+
+    import pysharedutils
+    pysharedutils.import_by_path('pysharedutils.functions.import_by_path')
+
+    # <function import_by_path at 0x103d2d5f0>
+
 
 Lists
 =====

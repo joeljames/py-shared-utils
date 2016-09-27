@@ -4,7 +4,7 @@ from mock import *  # flake8: noqa
 import pysharedutils
 
 
-class TestCachedProprty:
+class TestCachedProperty:
 
     class CachedPropertyExampleClass:
         num = 0
@@ -19,3 +19,12 @@ class TestCachedProprty:
         example_class.increment
         example_class.increment
         assert_equal(example_class.increment, 1)
+
+
+class TestImportByPath:
+
+    def test_import_by_path(self):
+        output = pysharedutils.import_by_path(
+            'pysharedutils.functions.import_by_path'
+        )
+        assert_equal(output, pysharedutils.import_by_path)

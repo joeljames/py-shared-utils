@@ -29,6 +29,7 @@ __all__ = [
     'force_str',
     # Functions
     'cached_property',
+    'import_by_path',
     # Ittrs
     'is_iterable',
     # Lists
