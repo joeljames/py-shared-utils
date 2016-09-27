@@ -24,6 +24,7 @@ __all__ = [
     'memoize',
     'cached_property',
     # Dicts
+    'ObjectDict',
     'MultiDict',
     'compact_dict',
     'merge_dicts',

@@ -109,6 +109,41 @@ Example::
 
 Dicts
 =====
+ObjectDict:
+-----------
+Helper class that makes a dictionary behave like an object, with attribute-style access (read and write). Signature: ``ObjectDict(d)``
+
+:attr:`d`
+    A python dict object.
+
+Example::
+
+    import pysharedutils
+    data = {
+        'name': 'foo',
+        'nesting': {
+            'nested_key': 'val',
+            'inner_nesting': 'inner_nesting_val'
+        },
+        'some_list': [
+            {
+                'foo': 'bar'
+            }
+        ]
+    }
+    output = pysharedutils.ObjectDict(data)
+    output.name
+    # 'foo'
+    output.nesting.nested_key
+    # 'val'
+    output.some_list[0].foo
+    # 'bar'
+    # You can also set variables using dot syntax
+    object_dict  = pysharedutils.ObjectDict(data)
+    object_dict.gender = 'Male'
+    object_dict.gender
+    # 'Male'
+
 MultiDict:
 ----------
 Extends a python dict type by adding ``getlist`` method. Signature: ``MultiDict(dict)``

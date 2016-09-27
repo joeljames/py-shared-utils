@@ -4,6 +4,33 @@ from mock import *  # flake8: noqa
 import pysharedutils
 
 
+class TestObjectDict:
+
+    def test_object_dict_access(self):
+        data = {
+            'name': 'foo',
+            'nesting': {
+                'nested_key': 'val',
+                'inner_nesting': 'inner_nesting_val'
+            },
+            'some_list': [
+                {
+                    'foo': 'bar'
+                }
+            ]
+        }
+        output = pysharedutils.ObjectDict(data)
+        assert_equal(output.name, 'foo')
+        assert_equal(output.nesting.nested_key, 'val')
+        assert_equal(output.nesting.inner_nesting, 'inner_nesting_val')
+        assert_equal(output.some_list[0].foo, 'bar')
+
+    def test_object_dict_write(self):
+        object_dict = pysharedutils.ObjectDict({})
+        object_dict.name = 'foo'
+        assert_equal(object_dict.name, 'foo')
+
+
 class TestMultiDict:
 
     def test_multi_dict(self):

@@ -7,12 +7,105 @@ from pysharedutils.strings import (
 )
 
 __all__ = [
+    'ObjectDict',
     'MultiDict',
     'compact_dict',
     'merge_dicts',
     'snake_case_dict_keys',
     'camel_case_dict_keys',
 ]
+
+
+def _wrap(val):
+    if isinstance(val, collections.Mapping):
+        return ObjectDict(val)
+    if isinstance(val, list):
+        return [_wrap(element) for element in val]
+    return val
+
+
+class ObjectDict(object):
+    """
+    Helper class that makes a dictionary behave like an object,
+    with attribute-style access (read and write).
+
+    Example:
+        >>> o = ObjectDict({'a': 1, 'b': 2})
+        >>> o.a
+        1
+        >>> o.c
+        AttributeError: No such attribute: c
+    """
+
+    def __init__(self, d):
+        # assign the inner dict manually to prevent __setattr__ from firing
+        # if not it will result in RuntimeError:
+        # maximum recursion depth exceeded
+        super(ObjectDict, self).__setattr__('_d', d)
+
+    def __contains__(self, key):
+        return key in self._d
+
+    def __nonzero__(self):
+        return bool(self._d)
+    __bool__ = __nonzero__
+
+    def __eq__(self, other):
+        if isinstance(other, ObjectDict):
+            return other._d == self._d
+        return other == self._d
+
+    def __ne__(self, other):
+        return not self == other
+
+    def __repr__(self):
+        r = repr(self._d)
+        if len(r) > 60:
+            r = r[:60] + '...}'
+        return r
+
+    def __iter__(self):
+        return iter(self._d)
+
+    def __len__(self, d):
+        return len(self._d)
+
+    def __getstate__(self):
+        return (self._d, )
+
+    def __dir__(self):
+        return list(self._d.keys())
+
+    def __getattr__(self, name):
+        if name in self._d:
+            return _wrap(self._d[name])
+        else:
+            raise AttributeError(
+                'No such attribute: %s' % (name)
+            )
+
+    def __setattr__(self, name, value):
+        self._d[name] = value
+
+    def __delattr__(self, name):
+        if name in self._d:
+            del self._d[name]
+        else:
+            raise AttributeError(
+                'No such attribute: %s' % (name)
+            )
+
+    def __getitem__(self, key):
+        return _wrap(self._d[key])
+
+    def __setitem__(self, key, value):
+        self._d[key] = value
+
+    def __delitem__(self, key):
+        del self._d[key]
+
+    def to_dict(self):
+        return self._d
 
 
 class MultiDict(dict):
