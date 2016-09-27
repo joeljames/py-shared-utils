@@ -54,7 +54,6 @@ class TestCompactDict:
             ]
         }
         output = pysharedutils.compact_dict(data)
-        set_trace()
         assert_equal(output, expected_output)
 
 

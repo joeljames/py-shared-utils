@@ -2,6 +2,7 @@ from pysharedutils.attrs import *  # NOQA
 from pysharedutils.dates import *  # NOQA
 from pysharedutils.dicts import *  # NOQA
 from pysharedutils.encodings import *  # NOQA
+from pysharedutils.functions import *  # NOQA
 from pysharedutils.ittrs import *  # NOQA
 from pysharedutils.lists import *  # NOQA
 from pysharedutils.strings import *  # NOQA
@@ -26,6 +27,8 @@ __all__ = [
     # Encodings
     'force_bytes',
     'force_str',
+    # Functions
+    'cached_property',
     # Ittrs
     'is_iterable',
     # Lists

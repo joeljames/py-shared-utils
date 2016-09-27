@@ -184,6 +184,26 @@ Example::
     # 'some_byte_string'
 
 
+Functions
+=========
+cached_property:
+----------------
+Decorator that caches the property on the instance. Computed only once per instance. Signature: ``@cached_property``
+
+Example::
+
+    import pysharedutils
+
+    class SlowClass:
+
+        @pysharedutils.cached_property
+        def very_slow(self):
+            time.sleep(1)
+            return "Slow class"
+
+    SlowClass().very_slow
+
+
 Lists
 =====
 compact_list:
