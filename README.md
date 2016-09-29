@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/joeljames/py-shared-utils.svg?branch=master)](https://travis-ci.org/joeljames/py-shared-utils) [![Documentation Status](https://readthedocs.org/projects/py-shared-utils/badge/?version=latest)](http://py-shared-utils.readthedocs.io/en/latest/?badge=latest)
+
+
 pysharedutils
 =============
 
