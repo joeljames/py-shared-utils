@@ -197,3 +197,60 @@ class TestCamelCaseDictKeys:
             output,
             expected_output
         )
+
+
+class TestGetDictProperties:
+
+    def test_simple_get_dict_properties(self):
+        d = {
+            'first_name': 'Foo',
+            'last_name': 'Bar'
+        }
+        output = pysharedutils.get_dict_properties(
+            d, 'first_name'
+        )
+        assert_equal(
+            output,
+            {'first_name': 'Foo'}
+        )
+
+    def test_get_dict_properties_with_non_existing_property(self):
+        d = {
+            'first_name': 'Foo',
+            'last_name': 'Bar'
+        }
+        output = pysharedutils.get_dict_properties(
+            d, 'first_name', 'zipcode'
+        )
+        assert_equal(
+            output,
+            {'first_name': 'Foo', 'zipcode': None}
+        )
+
+    def test_get_dict_properties_with_nested_dict(self):
+        d = {
+            'first_name': 'Foo',
+            'last_name': 'Bar',
+            'comment': {
+                'message': 'some text',
+                'user': {
+                    'username': 'foo.bar.com'
+                }
+            }
+        }
+        output = pysharedutils.get_dict_properties(
+            d,
+            'first_name',
+            'zipcode',
+            'comment.message',
+            'comment.location',
+            'comment.user.username'
+        )
+        expected_output = {
+            'first_name': 'Foo',
+            'zipcode': None,
+            'comment.message': 'some text',
+            'comment.location': None,
+            'comment.user.username': 'foo.bar.com'
+        }
+        assert_equal(output, expected_output)

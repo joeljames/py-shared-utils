@@ -30,6 +30,7 @@ __all__ = [
     'merge_dicts',
     'snake_case_dict_keys',
     'camel_case_dict_keys',
+    'get_dict_properties',
     # Encodings
     'force_bytes',
     'force_str',

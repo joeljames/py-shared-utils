@@ -1,5 +1,6 @@
 import six
 import collections
+import copy
 
 from pysharedutils.strings import (
     camel_to_snake_case,
@@ -13,6 +14,7 @@ __all__ = [
     'merge_dicts',
     'snake_case_dict_keys',
     'camel_case_dict_keys',
+    'get_dict_properties',
 ]
 
 
@@ -217,4 +219,32 @@ def camel_case_dict_keys(obj):
             key = k
 
         output[key] = element
+    return output
+
+
+def get_dict_properties(obj, *args):
+    """
+    :param obj: A python dict object.
+    :param *args: Property names which has to be fetched from the dict.
+        You can also use dot separated names to get
+        properties from nested dicts.
+
+    Example:
+        >>> d = {'first_name': 'Foo', 'last_name': 'Bar'}
+        >>> get_dict_properties(d, 'first_name')
+        {'first_name': 'Foo'}
+    """
+    output = {}
+
+    for key in args:
+        value = None
+        if '.' in key:
+            coppied_obj = copy.copy(obj)
+            for source in key.split('.'):
+                coppied_obj = coppied_obj.get(source)
+            value = coppied_obj
+        else:
+            value = obj.get(key)
+        output[key] = value
+
     return output

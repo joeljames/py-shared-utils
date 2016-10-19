@@ -222,6 +222,40 @@ Example::
     pysharedutils.camel_case_dict_keys({'snake_case': 'snake_case'})
     # {'snakeCase': 'snake_case'}
 
+get_dict_properties:
+---------------------
+Get multiple key value from a dict in one call. Signature: ``get_dict_properties(obj, *args)``
+
+:attr:`obj`
+    A python dict object.
+
+:attr:`*args`
+    Property names which has to be fetched from the dict.
+    You can also use dot separated names to get properties from nested dicts.
+
+Example::
+
+    import pysharedutils
+    d = {
+        'first_name': 'Foo',
+        'last_name': 'Bar',
+        'comment': {
+            'message': 'some text',
+            'user': {
+                'username': 'foo.bar.com'
+            }
+        }
+    }
+    pysharedutils.get_dict_properties(
+      d,
+      'first_name',
+      'zipcode',
+      'comment.message',
+      'comment.location',
+      'comment.user.username'
+    )
+    # {'first_name': 'Foo', 'zipcode': None, 'comment.message': 'some text', 'comment.location': None, 'comment.user.username': 'foo.bar.com'}
+
 
 Encodings
 =========
