@@ -32,7 +32,7 @@ Also, you can get the source from `GitHub <https://github.com/joeljames/py-share
 Changes
 -------
 
-See the :doc:`changelog` for a full list of changes to pyserializer.
+See the :doc:`changelog` for a full list of changes to py-shared-utils.
 
 .. note::  Always read `changelog <changelog.html>`_ documentation before
     putting updates live in production.

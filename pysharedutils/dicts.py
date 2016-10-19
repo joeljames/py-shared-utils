@@ -222,9 +222,11 @@ def camel_case_dict_keys(obj):
     return output
 
 
-def get_dict_properties(obj, *args):
+def get_dict_properties(obj, strict, *args):
     """
     :param obj: A python dict object.
+    :param strict: A bool, if set to False will ignore `AttributeError` when
+        trying to get non-existing propert on the object.
     :param *args: Property names which has to be fetched from the dict.
         You can also use dot separated names to get
         properties from nested dicts.
@@ -240,9 +242,13 @@ def get_dict_properties(obj, *args):
         value = None
         if '.' in key:
             coppied_obj = copy.copy(obj)
-            for source in key.split('.'):
-                coppied_obj = coppied_obj.get(source)
-            value = coppied_obj
+            try:
+                for source in key.split('.'):
+                    coppied_obj = coppied_obj.get(source)
+                value = coppied_obj
+            except AttributeError:
+                if strict is True:
+                    raise
         else:
             value = obj.get(key)
         output[key] = value

@@ -229,9 +229,12 @@ Get multiple key value from a dict in one call. Signature: ``get_dict_properties
 :attr:`obj`
     A python dict object.
 
+:attr:`strict`
+    A bool, if set to False will ignore ``AttributeError`` when trying to get non-existing propert on the object.
+
 :attr:`*args`
     Property names which has to be fetched from the dict.
-    You can also use dot separated names to get properties from nested dicts.
+    You can also use dot separated names to get properties from nested dicts. See example below.
 
 Example::
 
@@ -254,7 +257,7 @@ Example::
       'comment.location',
       'comment.user.username'
     )
-    # {'first_name': 'Foo', 'zipcode': None, 'comment.message': 'some text', 'comment.location': None, 'comment.user.username': 'foo.bar.com'}
+    # {'first_name': 'Foo', 'comment.user.username': 'foo.bar.com', 'zipcode': None, 'comment.location': None, 'comment.message': 'some text'}
 
 
 Encodings

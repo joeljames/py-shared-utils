@@ -207,7 +207,7 @@ class TestGetDictProperties:
             'last_name': 'Bar'
         }
         output = pysharedutils.get_dict_properties(
-            d, 'first_name'
+            d, False, 'first_name'
         )
         assert_equal(
             output,
@@ -220,7 +220,7 @@ class TestGetDictProperties:
             'last_name': 'Bar'
         }
         output = pysharedutils.get_dict_properties(
-            d, 'first_name', 'zipcode'
+            d, False, 'first_name', 'zipcode'
         )
         assert_equal(
             output,
@@ -240,6 +240,7 @@ class TestGetDictProperties:
         }
         output = pysharedutils.get_dict_properties(
             d,
+            False,
             'first_name',
             'zipcode',
             'comment.message',
@@ -254,3 +255,29 @@ class TestGetDictProperties:
             'comment.user.username': 'foo.bar.com'
         }
         assert_equal(output, expected_output)
+
+    @raises(AttributeError)
+    def test_get_dict_properties_with_strict_and_invalid_property(self):
+        d = {
+            'comment': {
+                'message': 'some text',
+            }
+        }
+        pysharedutils.get_dict_properties(
+            d,
+            True,
+            'comment.user.username'
+        )
+
+    def test_get_dict_properties_without_strict_and_invalid_property(self):
+        d = {
+            'comment': {
+                'message': 'some text',
+            }
+        }
+        output = pysharedutils.get_dict_properties(
+            d,
+            False,
+            'comment.user.username'
+        )
+        assert_equal(output, {'comment.user.username': None})
