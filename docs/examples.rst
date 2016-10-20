@@ -269,7 +269,7 @@ Maps the keys of a dict with the map keys. Signature: ``map_dict_keys(obj, map_o
 :attr:`map_obj`
     A map dict specifying the key and the new key.
 
-.. Example::
+Example::
 
     import pysharedutils
     obj = {
