@@ -313,7 +313,7 @@ class TestMapDictKeys:
         }
         map_obj = {
             'first_name': 'given_name',
-            'user.username': 'email',
+            'user.username': 'user.email',
         }
         expected_output = {
             'given_name': 'Joe',
@@ -335,7 +335,7 @@ class TestMapDictKeys:
         }
         map_obj = {
             'first_name': 'given_name',
-            'user.contact.email': 'contact_email',
+            'user.contact.email': 'user.contact.contact_email',
         }
         expected_output = {
             'given_name': 'Joe',
@@ -362,8 +362,8 @@ class TestMapDictKeys:
         }
         map_obj = {
             'first_name': 'given_name',
-            'user.contact.email': 'contact_email',
-            'user.contact.address.line_1': 'address_1',
+            'user.contact.email': 'user.contact.contact_email',
+            'user.contact.address.line_1': 'user.contact.address.address_1',
         }
         expected_output = {
             'given_name': 'Joe',

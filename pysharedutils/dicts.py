@@ -270,8 +270,8 @@ def map_dict_keys(obj, map_obj):
         {'given_name': 'Foo', 'last_name': 'Bar'}
     """
     for key, value in six.iteritems(map_obj):
-        map_key = value
         if '.' in key:
+            map_key = value.rsplit('.', 1)[1]
             coppied_obj = copy.copy(obj)
             sources = key.split('.')
             sources_len = len(sources)
@@ -289,6 +289,7 @@ def map_dict_keys(obj, map_obj):
                         leaf_map_obj
                     )
         else:
+            map_key = value
             if key in obj:
                 obj[map_key] = obj.pop(key)
     return obj
