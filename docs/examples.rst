@@ -259,6 +259,37 @@ Example::
     )
     # {'first_name': 'Foo', 'comment.user.username': 'foo.bar.com', 'zipcode': None, 'comment.location': None, 'comment.message': 'some text'}
 
+map_dict_keys:
+--------------
+Maps the keys of a dict with the map keys. Signature: ``map_dict_keys(obj, map_obj)``
+
+:attr:`obj`
+    A python dict object who's keys has to be mapped.
+
+:attr:`map_obj`
+    A map dict specifying the key and the new key.
+
+.. Example::
+
+    import pysharedutils
+    obj = {
+        'first_name': 'Joe',
+        'user': {
+            'contact': {
+                'email': 'joe@example.com',
+                'address': {
+                    'line_1': 'adress line 1'
+                }
+            }
+        }
+    }
+    map_obj = {
+        'first_name': 'given_name',
+        'user.contact.email': 'contact_email',
+        'user.contact.address.line_1': 'adress_1',
+    }
+    pysharedutils.map_dict_keys(obj, map_obj)
+    # {'user': {'contact': {'contact_email': 'joe@example.com', 'address': {'adress_1': 'adress line 1'}}}, 'given_name': 'Joe'}
 
 Encodings
 =========

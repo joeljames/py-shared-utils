@@ -281,3 +281,100 @@ class TestGetDictProperties:
             'comment.user.username'
         )
         assert_equal(output, {'comment.user.username': None})
+
+
+class TestMapDictKeys:
+
+    def test_map_dict_keys(self):
+        obj = {
+            'first_name': 'Joe',
+            'middle_name': 'P',
+            'last_name': 'Smith'
+        }
+        map_obj = {
+            'first_name': 'given_name',
+            'last_name': 'surname',
+            'mis_spelled_key': 'mis_spelled_value'
+        }
+        output = pysharedutils.map_dict_keys(obj, map_obj)
+        expected_output = {
+            'given_name': 'Joe',
+            'middle_name': 'P',
+            'surname': 'Smith'
+        }
+        assert_equal(output, expected_output)
+
+    def test_map_dict_keys_with_one_level(self):
+        obj = {
+            'first_name': 'Joe',
+            'user': {
+                'username': 'joe@example.com'
+            }
+        }
+        map_obj = {
+            'first_name': 'given_name',
+            'user.username': 'email',
+        }
+        expected_output = {
+            'given_name': 'Joe',
+            'user': {
+                'email': 'joe@example.com'
+            }
+        }
+        output = pysharedutils.map_dict_keys(obj, map_obj)
+        assert_equal(output, expected_output)
+
+    def test_map_dict_keys_with_two_level_nesting(self):
+        obj = {
+            'first_name': 'Joe',
+            'user': {
+                'contact': {
+                    'email': 'joe@example.com'
+                }
+            }
+        }
+        map_obj = {
+            'first_name': 'given_name',
+            'user.contact.email': 'contact_email',
+        }
+        expected_output = {
+            'given_name': 'Joe',
+            'user': {
+                'contact': {
+                    'contact_email': 'joe@example.com'
+                }
+            }
+        }
+        output = pysharedutils.map_dict_keys(obj, map_obj)
+        assert_equal(output, expected_output)
+
+    def test_map_dict_keys_with_three_level_nesting(self):
+        obj = {
+            'first_name': 'Joe',
+            'user': {
+                'contact': {
+                    'email': 'joe@example.com',
+                    'address': {
+                        'line_1': 'adress line 1'
+                    }
+                }
+            }
+        }
+        map_obj = {
+            'first_name': 'given_name',
+            'user.contact.email': 'contact_email',
+            'user.contact.address.line_1': 'adress_1',
+        }
+        expected_output = {
+            'given_name': 'Joe',
+            'user': {
+                'contact': {
+                    'contact_email': 'joe@example.com',
+                    'address': {
+                        'adress_1': 'adress line 1'
+                    }
+                }
+            }
+        }
+        output = pysharedutils.map_dict_keys(obj, map_obj)
+        assert_equal(output, expected_output)
