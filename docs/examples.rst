@@ -257,7 +257,7 @@ Example::
       'comment.location',
       'comment.user.username'
     )
-    # {'first_name': 'Foo', 'comment.user.username': 'foo.bar.com', 'zipcode': None, 'comment.location': None, 'comment.message': 'some text'}
+    # {'user': {'contact': {'contact_email': 'joe@example.com', 'address': {'address_1': 'address line 1'}}}, 'given_name': 'Joe'}
 
 map_dict_keys:
 --------------
@@ -278,7 +278,7 @@ Example::
             'contact': {
                 'email': 'joe@example.com',
                 'address': {
-                    'line_1': 'adress line 1'
+                    'line_1': 'address line 1'
                 }
             }
         }
@@ -286,7 +286,7 @@ Example::
     map_obj = {
         'first_name': 'given_name',
         'user.contact.email': 'contact_email',
-        'user.contact.address.line_1': 'adress_1',
+        'user.contact.address.line_1': 'address_1',
     }
     pysharedutils.map_dict_keys(obj, map_obj)
     # {'user': {'contact': {'contact_email': 'joe@example.com', 'address': {'adress_1': 'adress line 1'}}}, 'given_name': 'Joe'}

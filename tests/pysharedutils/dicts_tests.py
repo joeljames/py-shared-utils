@@ -363,7 +363,7 @@ class TestMapDictKeys:
         map_obj = {
             'first_name': 'given_name',
             'user.contact.email': 'contact_email',
-            'user.contact.address.line_1': 'adress_1',
+            'user.contact.address.line_1': 'address_1',
         }
         expected_output = {
             'given_name': 'Joe',
@@ -371,7 +371,7 @@ class TestMapDictKeys:
                 'contact': {
                     'contact_email': 'joe@example.com',
                     'address': {
-                        'adress_1': 'adress line 1'
+                        'address_1': 'adress line 1'
                     }
                 }
             }
