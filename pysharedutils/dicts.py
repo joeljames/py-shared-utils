@@ -1,5 +1,6 @@
 import six
 import collections
+import copy
 
 from pysharedutils.strings import (
     camel_to_snake_case,
@@ -13,6 +14,8 @@ __all__ = [
     'merge_dicts',
     'snake_case_dict_keys',
     'camel_case_dict_keys',
+    'get_dict_properties',
+    'map_dict_keys',
 ]
 
 
@@ -218,3 +221,75 @@ def camel_case_dict_keys(obj):
 
         output[key] = element
     return output
+
+
+def get_dict_properties(obj, strict, *args):
+    """
+    :param obj: A python dict object.
+    :param strict: A bool, if set to False will ignore `AttributeError` when
+        trying to get non-existing propert on the object.
+    :param *args: Property names which has to be fetched from the dict.
+        You can also use dot separated names to get
+        properties from nested dicts.
+
+    Example:
+        >>> d = {'first_name': 'Foo', 'last_name': 'Bar'}
+        >>> get_dict_properties(d, 'first_name')
+        {'first_name': 'Foo'}
+    """
+    output = {}
+
+    for key in args:
+        value = None
+        if '.' in key:
+            coppied_obj = copy.copy(obj)
+            try:
+                for source in key.split('.'):
+                    coppied_obj = coppied_obj.get(source)
+                value = coppied_obj
+            except AttributeError:
+                if strict is True:
+                    raise
+        else:
+            value = obj.get(key)
+        output[key] = value
+
+    return output
+
+
+def map_dict_keys(obj, map_obj):
+    """
+    :param obj: A python dict object who's keys has to be mapped..
+
+    :param map_obj: A map dict specifying the key and the new key..
+
+    Example:
+        >>> obj = {'first_name': 'Foo', 'last_name': 'Bar'}
+        >>> map_obj = {'first_name': 'given_name'}
+        >>> map_dict_keys(obj, map_obj)
+        {'given_name': 'Foo', 'last_name': 'Bar'}
+    """
+    for key, value in six.iteritems(map_obj):
+        if '.' in key:
+            map_key = value.rsplit('.', 1)[1]
+            coppied_obj = copy.copy(obj)
+            sources = key.split('.')
+            sources_len = len(sources)
+            for index, source in enumerate(sources):
+                coppied_obj = coppied_obj.get(source)
+                # Call the recursive `map_dict_keys` when you hit the
+                # second last element in the source.
+                if coppied_obj and index == (sources_len - 2):
+                    # Create the map obj for the leaf obj
+                    leaf_map_obj = {
+                        sources[index + 1]: map_key
+                    }
+                    map_dict_keys(
+                        coppied_obj,
+                        leaf_map_obj
+                    )
+        else:
+            map_key = value
+            if key in obj:
+                obj[map_key] = obj.pop(key)
+    return obj

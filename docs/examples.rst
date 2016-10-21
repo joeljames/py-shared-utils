@@ -222,6 +222,75 @@ Example::
     pysharedutils.camel_case_dict_keys({'snake_case': 'snake_case'})
     # {'snakeCase': 'snake_case'}
 
+get_dict_properties:
+---------------------
+Get multiple key value from a dict in one call. Signature: ``get_dict_properties(obj, *args)``
+
+:attr:`obj`
+    A python dict object.
+
+:attr:`strict`
+    A bool, if set to False will ignore ``AttributeError`` when trying to get non-existing propert on the object.
+
+:attr:`*args`
+    Property names which has to be fetched from the dict.
+    You can also use dot separated names to get properties from nested dicts. See example below.
+
+Example::
+
+    import pysharedutils
+    d = {
+        'first_name': 'Foo',
+        'last_name': 'Bar',
+        'comment': {
+            'message': 'some text',
+            'user': {
+                'username': 'foo.bar.com'
+            }
+        }
+    }
+    pysharedutils.get_dict_properties(
+      d,
+      False,
+      'first_name',
+      'zipcode',
+      'comment.message',
+      'comment.location',
+      'comment.user.username'
+    )
+    # {'first_name': 'Foo', 'comment.user.username': 'foo.bar.com', 'zipcode': None, 'comment.location': None, 'comment.message': 'some text'}
+
+map_dict_keys:
+--------------
+Maps the keys of a dict with the map keys. Signature: ``map_dict_keys(obj, map_obj)``
+
+:attr:`obj`
+    A python dict object who's keys has to be mapped.
+
+:attr:`map_obj`
+    A map dict specifying the key and the new key.
+
+Example::
+
+    import pysharedutils
+    obj = {
+        'first_name': 'Joe',
+        'user': {
+            'contact': {
+                'email': 'joe@example.com',
+                'address': {
+                    'line_1': 'address line 1'
+                }
+            }
+        }
+    }
+    map_obj = {
+        'first_name': 'given_name',
+        'user.contact.email': 'user.contact.contact_email',
+        'user.contact.address.line_1': 'user.contact.address_1',
+    }
+    pysharedutils.map_dict_keys(obj, map_obj)
+    # {'user': {'contact': {'contact_email': 'joe@example.com', 'address': {'address_1': 'address line 1'}}}, 'given_name': 'Joe'}
 
 Encodings
 =========

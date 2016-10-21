@@ -29,6 +29,21 @@ Also, you can get the source from `GitHub <https://github.com/joeljames/py-share
 :doc:`examples`
   Some quick usage examples.
 
+Changes
+-------
+
+See the :doc:`changelog` for a full list of changes to py-shared-utils.
+
+.. note::  Always read `changelog <changelog.html>`_ documentation before
+    putting updates live in production.
+
+Offline Documentation
+---------------------
+
+Download the docs in `pdf <https://media.readthedocs.org/pdf/py-shared-utils/latest/py-shared-utils.pdf>`_
+or `epub <https://readthedocs.org/projects/py-shared-utils/downloads/epub/latest/>`_
+formats for offline reading.
+
 Contribute
 ----------
 Always looking for contributions, additions and improvements.
@@ -78,6 +93,7 @@ Submit a pull request. Before submitting a pull request, make sure pull request 
     :hidden:
 
     examples
+    changelog
 
 Indices and tables
 ==================

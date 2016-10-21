@@ -1,0 +1,13 @@
+=========
+Changelog
+=========
+
+Changes in v0.4.0
+=================
+- Added support for ``get_dict_properties``, which adds ability to get multiple key value from a dict in one call.
+
+- Added support for ``map_dict_keys``, which adds ability to map the keys of a python dict with map value.
+
+Changes in v0.3.0
+=================
+- Added convenient python utility modules which are not included in python standard lib.
