@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='pysharedutils',
-    version='0.3.0',
+    version='0.4.0',
     description='Some convenient python utils.',
     author='Joel James',
     author_email='joeljames1985@gmail.com',
