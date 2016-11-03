@@ -2,6 +2,11 @@
 Changelog
 =========
 
+Changes in v0.4.1
+=================
+- Added support for ``get``, ``pop`` on ``ObjectDict``.
+
+
 Changes in v0.4.0
 =================
 - Added support for ``get_dict_properties``, which adds ability to get multiple key value from a dict in one call.
