@@ -80,6 +80,8 @@ class ObjectDict(object):
         return list(self._d.keys())
 
     def __getattr__(self, name):
+        if hasattr(self._d, name):
+            return getattr(self._d, name)
         if name in self._d:
             return _wrap(self._d[name])
         else:
