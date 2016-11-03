@@ -30,6 +30,11 @@ class TestObjectDict:
         object_dict.name = 'foo'
         assert_equal(object_dict.name, 'foo')
 
+    def test_object_dict_methods(self):
+        object_dict = pysharedutils.ObjectDict({'name': 'foo'})
+        assert_equal(object_dict.get('name'), 'foo')
+        assert_equal(object_dict.pop('missing', 'default'), 'default')
+
 
 class TestMultiDict:
 
