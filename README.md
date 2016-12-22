@@ -32,4 +32,3 @@ Contribution
 ------------
 
 [Contribution](CONTRIBUTING.md)
-
