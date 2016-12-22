@@ -2,6 +2,10 @@
 Changelog
 =========
 
+Changes in v0.4.2
+=================
+- Fixes bug in compact_dict where compact dict did not work if a last of non dicts were passed in.
+
 Changes in v0.4.1
 =================
 - Added support for ``get``, ``pop`` on ``ObjectDict``.
