@@ -130,20 +130,20 @@ def compact_dict(obj):
     """
     output = {}
     for key, value in six.iteritems(obj):
-        element = None
-        if isinstance(value, collections.Mapping):
-            element = compact_dict(value)
-        elif isinstance(value, list):
-            arr = []
-            for i in value:
-                element = compact_dict(i)
-                arr.append(element)
-            element = arr
-        elif value:
-            element = value
-        if element:
-            output[key] = element
+        value = _compact_dict_value(value)
+        if value:
+            output[key] = value
     return output
+
+
+def _compact_dict_value(value):
+    if isinstance(value, six.string_types):
+        return value
+    elif isinstance(value, collections.Mapping):
+        return compact_dict(value)
+    elif isinstance(value, collections.Iterable):
+        return list(map(_compact_dict_value, value))
+    return value
 
 
 def merge_dicts(*dicts):

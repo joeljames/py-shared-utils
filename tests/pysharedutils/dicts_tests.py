@@ -66,7 +66,8 @@ class TestCompactDict:
                         'blank': None
                     }
                 }
-            ]
+            ],
+            'roles': ['admin', 'client'],
         }
         expected_output = {
             'username': 'foobar',
@@ -83,7 +84,8 @@ class TestCompactDict:
                         'key': 'value'
                     }
                 }
-            ]
+            ],
+            'roles': ['admin', 'client'],
         }
         output = pysharedutils.compact_dict(data)
         assert_equal(output, expected_output)
