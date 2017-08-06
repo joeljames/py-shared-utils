@@ -22,17 +22,24 @@ def camel_to_snake_case(word):
     return word.lower()
 
 
-def snake_to_camel_case(word):
+def snake_to_camel_case(word, upper=False):
     """
     :param word: A string that needs to be converted to camel case.
+    :param upper: Whether or not to return UpperCamelCase instead of lowerCamelCase
 
     Convert words to CamelCase.
     Example:
         >>> snake_to_camel_case('snake_case')
         'snakeCase'
+    Example:
+        >>> snake_to_camel_case('snake_case', upper=True)
+        'SnakeCase'
     """
     word = re.sub(r"(?:^|_)(.)", lambda m: m.group(1).upper(), word)
-    return word[0].lower() + word[1:]
+    if upper:
+        return word
+    else:
+        return word[0].lower() + word[1:]
 
 
 def equals(val1, val2):

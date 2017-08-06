@@ -33,6 +33,9 @@ class TestSnakeCaseToCamel:
         output = pysharedutils.snake_to_camel_case('snake_case')
         assert_equal(output, 'snakeCase')
 
+    def test_snake_to_upper_camel_case(self):
+        output = pysharedutils.snake_to_camel_case('snake_case', upper=True)
+        assert_equal(output, 'SnakeCase')
 
 class TestEquals:
 

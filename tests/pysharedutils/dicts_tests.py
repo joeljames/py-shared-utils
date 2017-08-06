@@ -205,6 +205,53 @@ class TestCamelCaseDictKeys:
             expected_output
         )
 
+    def test_simple_upper_camel_case_dict_keys(self):
+        output = pysharedutils.camel_case_dict_keys(
+            {'snake_case': 'some value'}, upper=True
+        )
+        assert_equal(
+            output,
+            {'SnakeCase': 'some value'}
+        )
+
+    def test_nested_upper_camel_case_dict_keys(self):
+        obj = {
+            1: 'int key',
+            (1, 2): 'tuple key',
+            'camelCase': '',
+            'user': {
+                'user_name': 'foo',
+                'comments': [
+                    {
+                        'some_coment': 'abc',
+                        'some_nested_dict': {
+                            'camel_case': 'a'
+                        }
+                    }
+                ]
+            }
+        }
+        expected_output = {
+            1: 'int key',
+            (1, 2): 'tuple key',
+            'CamelCase': '',
+            'User': {
+                'UserName': 'foo',
+                'Comments': [
+                    {
+                        'SomeComent': 'abc',
+                        'SomeNestedDict': {
+                            'CamelCase': 'a'
+                        }
+                    }
+                ]
+            }
+        }
+        output = pysharedutils.camel_case_dict_keys(obj, upper=True)
+        assert_equal(
+            output,
+            expected_output
+        )
 
 class TestGetDictProperties:
 
