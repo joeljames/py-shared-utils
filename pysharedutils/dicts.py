@@ -191,11 +191,11 @@ def snake_case_dict_keys(obj):
     return output
 
 
-def camel_case_dict_keys(obj):
+def camel_case_dict_keys(obj, upper=False):
     """
     :param obj: A dict who's keys has to
         be converted from snake case to camel case.
-
+    :param upper: Whether or not to return UpperCamelCase instead of lowerCamelCase
     Maps the keys of the dict from snake case to camel case.
     Example:
         >>> camel_case_dict_keys({'snake_case': 'snake_case'})
@@ -208,16 +208,16 @@ def camel_case_dict_keys(obj):
             arr = []
             for value in value_list:
                 if isinstance(value, dict):
-                    value = camel_case_dict_keys(value)
+                    value = camel_case_dict_keys(value, upper=upper)
                 arr.append(value)
             element = arr
         elif isinstance(v, dict):
-            element = camel_case_dict_keys(v)
+            element = camel_case_dict_keys(v, upper=upper)
         else:
             element = v
 
         if isinstance(k, six.string_types):
-            key = snake_to_camel_case(k)
+            key = snake_to_camel_case(k, upper=upper)
         else:
             key = k
 
