@@ -228,6 +228,9 @@ Example::
     pysharedutils.camel_case_dict_keys({'snake_case': 'snake_case'})
     # {'snakeCase': 'snake_case'}
 
+    pysharedutils.camel_case_dict_keys({'snake_case': 'snake_case'}, upper=True)
+    # {'SnakeCase': 'snake_case'}
+
 get_dict_properties:
 ---------------------
 Get multiple key value from a dict in one call. Signature: ``get_dict_properties(obj, *args)``
@@ -470,6 +473,8 @@ Example::
     import pysharedutils
     pysharedutils.snake_to_camel_case('snake_case')
     # 'snakeCase'
+    pysharedutils.snake_to_camel_case('snake_case', upper=True)
+    # 'SnakeCase'
 
 equals:
 -------

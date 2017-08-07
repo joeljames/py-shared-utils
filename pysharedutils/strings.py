@@ -25,7 +25,8 @@ def camel_to_snake_case(word):
 def snake_to_camel_case(word, upper=False):
     """
     :param word: A string that needs to be converted to camel case.
-    :param upper: Whether or not to return UpperCamelCase instead of lowerCamelCase
+    :param upper: Whether or not to return UpperCamelCase
+        instead of lowerCamelCase
 
     Convert words to CamelCase.
     Example:
