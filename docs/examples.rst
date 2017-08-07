@@ -214,7 +214,13 @@ Example::
 
 camel_case_dict_keys:
 ---------------------
-Maps the keys of the dict from snake case to camel case. Signature: ``camel_case_dict_keys(obj)``
+Maps the keys of the dict from snake case to camel case. Signature: ``camel_case_dict_keys(obj, upper=False)``
+
+:attr:`obj`
+    A python dict object.
+
+:attr:`upper`
+    A bool, default False. If set to True will convert the keys to upper camel case else will conver the keys to lower camel case.
 
 Example::
 
@@ -450,10 +456,13 @@ Example::
 
 snake_to_camel_case:
 --------------------
-Converts a snake case word to camel case. Signature: ``snake_to_camel_case(word)``
+Converts a snake case word to camel case. Signature: ``snake_to_camel_case(word, upper=False)``
 
 :attr:`word`
     A string that needs to be converted to camel case.
+
+:attr:`upper`
+    A bool, default False. If set to True will convert the word to upper camel case else will conver the word to lower camel case.
 
 
 Example::
